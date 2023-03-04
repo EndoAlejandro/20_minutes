@@ -3,10 +3,15 @@ using UnityEngine;
 
 namespace PlayerComponents
 {
-    public class Shooting : MonoBehaviour
+    public class Shooting : PlayerComponent
     {
         [SerializeField] private Transform weapon;
+
+        [Header("Bullet")]
         [SerializeField] private Bullet bullet;
+
+        [SerializeField] private float bulletSpeed = 10f;
+        [SerializeField] private float bulletLifeTime = 10f;
 
         [SerializeField] private float timeBetweenShooting = 0.5f;
 
@@ -35,7 +40,8 @@ namespace PlayerComponents
             {
                 _shootTimer = timeBetweenShooting;
                 var b = Instantiate(bullet, transform.position, Quaternion.identity);
-                b.Setup(_aimDirection, 2f, 3f);
+                b.Setup(_aimDirection, bulletSpeed, bulletLifeTime);
+                Player.SetState(PlayerState.Shooting);
             }
         }
 
