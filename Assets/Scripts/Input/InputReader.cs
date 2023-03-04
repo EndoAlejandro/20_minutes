@@ -9,11 +9,13 @@ namespace Input
     {
         public static InputReader Instance { get; private set; }
 
-        private PlayerControls _input;
-
         public Vector2 Movement => _input != null ? _input.Player.Movement.ReadValue<Vector2>() : Vector2.zero;
         public Vector2 MouseWorld { get; private set; }
+        public bool Shoot => _input != null && _input.Player.Shoot.IsPressed();
+        public bool Reload => _input != null && _input.Player.Reload.IsPressed();
 
+        private PlayerControls _input;
+        
         private void Awake()
         {
             if (Instance != null)
