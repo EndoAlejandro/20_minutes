@@ -5,12 +5,12 @@ namespace PlayerComponents
 {
     public class Shooting : PlayerComponent
     {
+        [Header("Gun")]
         [SerializeField] private Transform weapon;
 
         [Header("Bullet")]
         [SerializeField] private Bullet bullet;
 
-        [SerializeField] private float bulletSpeed = 10f;
         [SerializeField] private float bulletLifeTime = 10f;
 
         [SerializeField] private float timeBetweenShooting = 0.5f;
@@ -40,7 +40,7 @@ namespace PlayerComponents
             {
                 _shootTimer = timeBetweenShooting;
                 var b = Instantiate(bullet, transform.position, Quaternion.identity);
-                b.Setup(_aimDirection, bulletSpeed, bulletLifeTime);
+                b.Setup(_aimDirection, Player.Gun.BulletSpeed, bulletLifeTime);
                 Player.SetState(PlayerState.Shooting);
             }
         }

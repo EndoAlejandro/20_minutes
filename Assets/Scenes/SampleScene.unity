@@ -513,7 +513,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97438473d263b7a4ea2be793bc0afe98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  maxSpeed: 5
+  reducedSpeed: 3
   acceleration: 10
 --- !u!114 &1528346013
 MonoBehaviour:
@@ -527,6 +528,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 143fd714a39c1f94a89489e413100fc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunData: {fileID: 11400000, guid: 16af05da69f0aef459945abca103ddba, type: 2}
+  shootingTime: 0.2
+  reloadTime: 1
 --- !u!58 &1528346014
 CircleCollider2D:
   m_ObjectHideFlags: 0

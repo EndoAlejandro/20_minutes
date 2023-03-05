@@ -1,18 +1,24 @@
 using System;
 using UnityEngine;
+using Weapons;
 
 namespace PlayerComponents
 {
     public class Player : MonoBehaviour
     {
+        [SerializeField] private GunData gunData;
         [SerializeField] private float shootingTime = 0.2f;
         [SerializeField] private float reloadTime = 1f;
 
         private float _transitionTime;
 
+        public Gun Gun { get; private set; }
+
         public PlayerState State { get; private set; }
 
         private void Awake() => State = PlayerState.Idle;
+
+        private void Start() => Gun = new Gun(gunData);
 
         private void Update()
         {
@@ -49,5 +55,8 @@ namespace PlayerComponents
                     break;
             }
         }
+
+        [ContextMenu("UpgradeSpeed")]
+        public void UpgradeSpeed() => Gun.SetBulletSpeed(Gun.BulletSpeed * 2);
     }
 }
