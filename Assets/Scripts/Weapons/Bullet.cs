@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using EnemyComponents;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -20,7 +21,11 @@ public class Bullet : MonoBehaviour
         StartCoroutine(LifeTime(lifeTime));
     }
 
-    private void OnTriggerEnter2D(Collider2D col) => BulletCollide();
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.TryGetComponent(out Enemy enemy)) enemy.TakeDamage(_direction * _speed * 0.1f,1);
+        BulletCollide();
+    }
 
     private IEnumerator LifeTime(float lifeTime)
     {
