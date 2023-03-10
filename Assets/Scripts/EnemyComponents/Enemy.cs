@@ -6,6 +6,7 @@ namespace EnemyComponents
     {
         [SerializeField] private int maxHealth = 10;
         [SerializeField] private float speed = 1f;
+        [SerializeField] private ExperiencePoint xpPrefab;
 
         private int _health;
 
@@ -18,16 +19,14 @@ namespace EnemyComponents
 
         private void Awake() => _rigidbody = GetComponent<Rigidbody2D>();
         private void Start() => _health = maxHealth;
+
         private void FixedUpdate()
         {
             if (_playerTransform == null) return;
+
             _direction = (_playerTransform.position - transform.position).normalized;
             transform.right = _direction;
             _rigidbody.AddForce(_direction * speed * 10f, ForceMode2D.Force);
-        }
-
-        private void Update()
-        {
         }
 
         public void Setup(EnemySpawner enemySpawner, Transform playerTransform)
@@ -44,6 +43,7 @@ namespace EnemyComponents
             if (_health > 0) return;
 
             _enemySpawner.RegisterDead();
+            Instantiate(xpPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

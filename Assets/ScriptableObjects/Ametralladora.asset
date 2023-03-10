@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   art: {fileID: 0}
   damage: 1
-  bulletSpeed: 50
+  bulletSpeed: 15
   bulletLifeTime: 50
-  bulletsPerShot: 1
-  clipSize: 1000
+  knockBackForce: 7
+  bulletsPerShot: 5
+  clipSize: 10

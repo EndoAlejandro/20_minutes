@@ -47,8 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643efcfdd6a13d746b416e0b4bb63b34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 3
   speed: 1
+  xpPrefab: {fileID: 2880675916049112951, guid: d55bda3d8deb93b4aba93db8c599ecfd, type: 3}
 --- !u!50 &3061131859795919130
 Rigidbody2D:
   serializedVersion: 4

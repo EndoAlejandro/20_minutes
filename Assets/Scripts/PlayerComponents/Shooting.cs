@@ -40,7 +40,7 @@ namespace PlayerComponents
             {
                 _shootTimer = timeBetweenShooting;
                 var b = Instantiate(bullet, transform.position, Quaternion.identity);
-                b.Setup(_aimDirection, Player.Gun.BulletSpeed, bulletLifeTime);
+                b.Setup(_aimDirection, Player.Gun);
                 Player.SetState(PlayerState.Shooting);
             }
         }

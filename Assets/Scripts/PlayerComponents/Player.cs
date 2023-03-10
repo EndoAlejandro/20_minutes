@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Weapons;
 
@@ -5,11 +6,14 @@ namespace PlayerComponents
 {
     public class Player : MonoBehaviour
     {
+        public event Action OnXp;
+        
         [SerializeField] private GunData gunData;
         [SerializeField] private float shootingTime = 0.2f;
         [SerializeField] private float reloadTime = 1f;
 
         private float _transitionTime;
+        private int _currentXp;
 
         public Gun Gun { get; private set; }
 
@@ -57,5 +61,7 @@ namespace PlayerComponents
 
         [ContextMenu("UpgradeSpeed")]
         public void UpgradeSpeed() => Gun.SetBulletSpeed(Gun.BulletSpeed * 2);
+
+        public void AddXp() => OnXp?.Invoke();
     }
 }
